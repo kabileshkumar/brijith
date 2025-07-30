@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import ParticleBackground from '../components/ParticleBackground';
 import { useSearch } from '@/context/SearchContext';
 

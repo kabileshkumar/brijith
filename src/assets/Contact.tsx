@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -35,7 +35,7 @@ export default function Contact() {
   });
 
   // Form submission handler using Web3Forms
-  async function onSubmit(data: ContactFormValues) {
+  async function onSubmit() {
     setIsSubmitting(true);
     
     try {

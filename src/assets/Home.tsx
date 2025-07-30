@@ -1,7 +1,7 @@
 import { Link } from "wouter";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import ParticleBackground from '../components/ParticleBackground';
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSearch } from '@/context/SearchContext';
 
 export default function Home() {

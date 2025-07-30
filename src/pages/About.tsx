@@ -1,4 +1,3 @@
-import React from 'react';
 import ParticleBackground from '../components/ParticleBackground';
 import { motion } from 'framer-motion';
 

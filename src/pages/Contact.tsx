@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -33,7 +32,7 @@ export default function Contact() {
     }
   });
 
-  const onSubmit = async (data: ContactFormValues) => {
+  const onSubmit = async () => {
     // This would normally be a form submission to a server
     // For this frontend-only implementation, we're just showing a success toast
     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate server delay
