@@ -22,7 +22,7 @@ export default function Blogs() {
       id: 1,
       title: "Uncomplicated Firewall",
       description: "A guide to understanding and configuring the Uncomplicated Firewall (UFW) for Linux systems.",
-      image: "/assets/docker.webp",
+      image: "/assets/pathtraversal.webp",
       link: "#"
     },
     {
