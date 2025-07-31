@@ -33,7 +33,7 @@ export default function About() {
               >
                 <div className="bg-gray-100 dark:bg-[#0d0c14] p-4 rounded-lg shadow-md mb-4">
                   <img 
-                    src="/assets/profilepic.jpeg" 
+                    src="./assets/profilepic.jpeg" 
                     alt="Brijith K Biju" 
                     className="w-full h-auto rounded-lg"
                   />

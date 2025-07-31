@@ -22,42 +22,42 @@ export default function Blogs() {
       id: 1,
       title: "Uncomplicated Firewall",
       description: "A guide to understanding and configuring the Uncomplicated Firewall (UFW) for Linux systems.",
-      image: "/assets/pathtraversal.webp",
+      image: "./assets/pathtraversal.webp",
       link: "#"
     },
     {
       id: 2,
       title: "Path Traversal Demo",
       description: "A practical demonstration of path traversal vulnerabilities and how to prevent them.",
-      image: "/assets/pathtraversal.webp",
+      image: "./assets/pathtraversal.webp",
       link: "#"
     },
     {
       id: 3,
       title: "Reconnaissance",
       description: "The art of information gathering and mapping attack surfaces in ethical hacking.",
-      image: "/assets/recon.webp",
+      image: "./assets/recon.webp",
       link: "#"
     },
     {
       id: 4,
       title: "Dark Web",
       description: "Understanding the dark web, its infrastructure, and security considerations.",
-      image: "/assets/darkweb.jpg",
+      image: "./assets/darkweb.jpg",
       link: "#"
     },
     {
       id: 5,
       title: "Cryptocurrency",
       description: "A deep dive into cryptocurrency security, blockchain technology, and potential vulnerabilities.",
-      image: "/assets/cryptocurrency.jpg",
+      image: "./assets/cryptocurrency.jpg",
       link: "#"
     },
     {
       id: 6,
       title: "Cyberpunk Security",
       description: "Exploring futuristic cybersecurity challenges in an increasingly digital world.",
-      image: "/assets/resources.jpg",
+      image: "./assets/resources.jpg",
       link: "#"
     }
   ];
