@@ -1,5 +1,6 @@
 import ParticleBackground from '../components/ParticleBackground';
 import { motion } from 'framer-motion';
+import { getImagePath } from '@/lib/utils';
 
 export default function About() {
   return (
@@ -33,7 +34,7 @@ export default function About() {
               >
                 <div className="bg-gray-100 dark:bg-[#0d0c14] p-4 rounded-lg shadow-md mb-4">
                   <img 
-                    src="./assets/profilepic.jpeg" 
+                    src={getImagePath('assets/profilepic.jpeg')} 
                     alt="Brijith K Biju" 
                     className="w-full h-auto rounded-lg"
                   />

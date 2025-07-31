@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ParticleBackground from '../components/ParticleBackground';
 import { useMemo } from 'react';
 import { useSearch } from '@/context/SearchContext';
-import { getImagePath } from '@/lib/utils';
+import { getImagePath, getBackgroundImagePath } from '@/lib/utils';
 
 export default function Home() {
   // Get search query from context
@@ -40,7 +40,7 @@ export default function Home() {
     <div className="overflow-x-hidden bg-white dark:bg-[#0a0915]">
       {/* Main Intro Section */}
       <main className="intro-main index h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden dark:bg-[#0a0915] bg-white"
-        style={{ backgroundImage: `url(${getImagePath('assets/hero-bg.jpg')})` }}>
+        style={{ backgroundImage: getBackgroundImagePath('assets/hero-bg.jpg') }}>
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-white/70 dark:from-black/30 dark:to-black/70"></div>
         
         <div className="intro text-center relative z-10">
@@ -255,7 +255,7 @@ export default function Home() {
                   </div>
                   <div className="mb-4 overflow-hidden rounded-lg">
                     <img 
-                      src="./assets/recon.webp" 
+                      src={getImagePath('assets/recon.webp')} 
                       alt="Recon Systems" 
                       className="w-full h-36 object-cover hover:scale-105 transition-transform duration-500"
                     />
@@ -289,7 +289,7 @@ export default function Home() {
                   </div>
                   <div className="mb-4 overflow-hidden rounded-lg">
                     <img 
-                      src="./assets/recon.webp" 
+                      src={getImagePath('assets/recon.webp')} 
                       alt="Recon Systems" 
                       className="w-full h-36 object-cover hover:scale-105 transition-transform duration-500"
                     />
