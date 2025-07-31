@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ParticleBackground from '../components/ParticleBackground';
 import { useMemo } from 'react';
 import { useSearch } from '@/context/SearchContext';
-import { getImagePath, getBackgroundImagePath } from '@/lib/utils';
+import { getImagePath, getBackgroundImagePath, getAssetPath } from '@/lib/utils';
 
 export default function Home() {
   // Get search query from context
@@ -14,17 +14,17 @@ export default function Home() {
     { 
       title: "Uncomplicated Firewall", 
       description: "A guide to understanding and configuring the Uncomplicated Firewall (UFW) for Linux systems.",
-      image: getImagePath("assets/pathtraversal.webp") 
+      image: getAssetPath("assets/pathtraversal.webp") 
     },
     { 
       title: "Dark Web", 
       description: "Understanding the dark web, its infrastructure, and security considerations.",
-      image: getImagePath("assets/darkweb.jpg") 
+      image: getAssetPath("assets/darkweb.jpg") 
     },
     { 
       title: "Docker", 
       description: "Introduction to Docker containerization and its security implications.",
-      image: getImagePath("assets/docker.webp") 
+      image: getAssetPath("assets/docker.webp") 
     }
   ];
   
@@ -40,7 +40,7 @@ export default function Home() {
     <div className="overflow-x-hidden bg-white dark:bg-[#0a0915]">
       {/* Main Intro Section */}
       <main className="intro-main index h-screen flex items-center justify-center bg-cover bg-center relative overflow-hidden dark:bg-[#0a0915] bg-white"
-        style={{ backgroundImage: getBackgroundImagePath('assets/hero-bg.jpg') }}>
+        style={{ backgroundImage: `url(${getAssetPath('assets/hero-bg.jpg')})` }}>
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-white/70 dark:from-black/30 dark:to-black/70"></div>
         
         <div className="intro text-center relative z-10">
@@ -86,7 +86,7 @@ export default function Home() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
                   <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden">
                     <img 
-                      src={getImagePath('assets/profilepic.jpeg')} 
+                      src={getAssetPath('assets/profilepic.jpeg')} 
                       alt="Brijith K Biju"
                       className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                     />
@@ -255,7 +255,7 @@ export default function Home() {
                   </div>
                   <div className="mb-4 overflow-hidden rounded-lg">
                     <img 
-                      src={getImagePath('assets/recon.webp')} 
+                      src={getAssetPath('assets/recon.webp')} 
                       alt="Recon Systems" 
                       className="w-full h-36 object-cover hover:scale-105 transition-transform duration-500"
                     />
@@ -289,7 +289,7 @@ export default function Home() {
                   </div>
                   <div className="mb-4 overflow-hidden rounded-lg">
                     <img 
-                      src={getImagePath('assets/recon.webp')} 
+                      src={getAssetPath('assets/recon.webp')} 
                       alt="Recon Systems" 
                       className="w-full h-36 object-cover hover:scale-105 transition-transform duration-500"
                     />

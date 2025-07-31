@@ -29,3 +29,11 @@ export function getBackgroundImagePath(path: string): string {
   
   return `url(/${cleanPath})`;
 }
+
+// Function to ensure images are properly served in all environments
+export function getAssetPath(path: string): string {
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  
+  // Always use relative path for assets
+  return cleanPath;
+}
