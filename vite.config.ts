@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "../dist",
+    outDir: "dist",
     emptyOutDir: true,
     assetsDir: 'assets',
     rollupOptions: {
@@ -29,7 +29,7 @@ export default defineConfig({
       }
     }
   },
-  publicDir: 'public',
+  publicDir: path.resolve(__dirname, 'public'),
   server: {
     port: 3001,
     host: "0.0.0.0",

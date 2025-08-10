@@ -34,6 +34,12 @@ export function getBackgroundImagePath(path: string): string {
 export function getAssetPath(path: string): string {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   
-  // Always use relative path for assets
-  return cleanPath;
+  // For production builds, use the correct asset path
+  if (import.meta.env.PROD) {
+    // In production, assets are copied to the root of dist
+    return cleanPath;
+  }
+  
+  // For development, use the public path
+  return `/${cleanPath}`;
 }

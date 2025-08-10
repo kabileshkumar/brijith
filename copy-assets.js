@@ -49,6 +49,32 @@ if (fs.existsSync(assetsDir)) {
   });
 }
 
+// Also copy public/assets to dist/assets for production builds
+const distAssetsDir = path.join(__dirname, 'dist', 'assets');
+if (!fs.existsSync(distAssetsDir)) {
+  fs.mkdirSync(distAssetsDir, { recursive: true });
+}
+
+if (fs.existsSync(publicAssetsPath)) {
+  const publicFiles = fs.readdirSync(publicAssetsPath);
+  
+  publicFiles.forEach(file => {
+    const ext = path.extname(file).toLowerCase();
+    if (['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif'].includes(ext)) {
+      const sourcePath = path.join(publicAssetsPath, file);
+      const destPath = path.join(distAssetsDir, file);
+      
+      try {
+        fs.copyFileSync(sourcePath, destPath);
+        console.log(`Copied ${file} to dist/assets/`);
+        copiedCount++;
+      } catch (error) {
+        console.error(`Error copying ${file} to dist:`, error.message);
+      }
+    }
+  });
+}
+
 if (copiedCount === 0) {
   console.log('All assets are up to date!');
 } else {
