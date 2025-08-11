@@ -4,6 +4,8 @@ import { z } from 'zod';
 import ParticleBackground from '../components/ParticleBackground';
 import { motion } from 'framer-motion';
 import { useToast } from '@/hooks/use-toast';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 // Form validation schema
 const contactSchema = z.object({
@@ -17,6 +19,8 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
+  
   const { 
     register, 
     handleSubmit, 
@@ -32,17 +36,31 @@ export default function Contact() {
     }
   });
 
-  const onSubmit = async () => {
-    // This would normally be a form submission to a server
-    // For this frontend-only implementation, we're just showing a success toast
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate server delay
-    
-    toast({
-      title: "Message Sent",
-      description: "Your message has been sent successfully. I'll get back to you soon!",
-    });
-    
-    reset();
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Your message has been sent to brijithkbiju@gmail.com. I'll get back to you soon!",
+        });
+        reset();
+      }
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      toast({
+        title: "Failed to Send Message",
+        description: "There was an error sending your message. Please try again or contact me directly at brijithkbiju@gmail.com",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -68,13 +86,14 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-3xl mx-auto bg-gray-100 dark:bg-[#151320] rounded-lg shadow-lg p-8"
         >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
                 <input 
                   type="text" 
                   id="name"
+                  name="user_name"
                   placeholder="Your name" 
                   className={`w-full bg-gray-100 dark:bg-[#0d0c14] border ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} rounded-md py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
                   {...register('name')}
@@ -87,6 +106,7 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email"
+                  name="user_email"
                   placeholder="your.email@example.com" 
                   className={`w-full bg-gray-100 dark:bg-[#0d0c14] border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} rounded-md py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
                   {...register('email')}
@@ -100,6 +120,7 @@ export default function Contact() {
               <input 
                 type="text" 
                 id="subject"
+                name="subject"
                 placeholder="What is this regarding?" 
                 className={`w-full bg-gray-100 dark:bg-[#0d0c14] border ${errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} rounded-md py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
                 {...register('subject')}
@@ -111,6 +132,7 @@ export default function Contact() {
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
               <textarea 
                 id="message"
+                name="message"
                 placeholder="Your message here..." 
                 rows={5}
                 className={`w-full bg-gray-100 dark:bg-[#0d0c14] border ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} rounded-md py-2 px-4 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
